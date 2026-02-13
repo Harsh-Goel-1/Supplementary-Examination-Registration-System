@@ -9,7 +9,8 @@ Group members:-
 
 23DCS013 - Kanish Dhima
 
-ER Diagram arrow notation mapping:-
+# ER Diagram arrow notation mapping:-
+
 || = 1
 
 o| = 0 or 1
