@@ -7,7 +7,7 @@ Group members:-
 
 23DCS012 - Himanshu Choudhary
 
-23DCS013 - Kanish Dhima
+23DCS013 - Kanish Dhiman
 
 # ER Diagram arrow notation mapping:-
 
