@@ -25,7 +25,7 @@ CREATE TABLE subject (
 -- 4) REGISTRATION
 CREATE TABLE registration (
     reg_id     INT AUTO_INCREMENT PRIMARY KEY,
-    status     VARCHAR(30) NOT NULL,
+    status     ENUM('Pending', 'Approved') NOT NULL,
     student_id INT NOT NULL,
     subject_id INT NOT NULL,
 
