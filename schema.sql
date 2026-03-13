@@ -47,5 +47,5 @@ CREATE TABLE payment (
     FOREIGN KEY (reg_id) REFERENCES registration(reg_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
-)
+);
 
