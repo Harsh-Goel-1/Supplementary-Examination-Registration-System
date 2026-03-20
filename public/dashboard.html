@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Suppl. Exam Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand"><span class="brand-icon">📝</span> NITH Suppl. Exam</a>
+    <div class="nav-links">
+      <span class="nav-welcome" id="nav-welcome"></span>
+      <button class="btn btn-ghost" id="nav-logout">Log Out</button>
+    </div>
+  </nav>
+
+  <main class="dashboard">
+    <!-- ── Registration Form ────────────────────────── -->
+    <section class="dash-card register-card">
+      <h2>Register for Supplementary Exam</h2>
+      <p class="card-sub">Select a course, pay <strong>₹500</strong> via <strong>SBI Collect</strong>, and enter your transaction ID below.</p>
+
+      <div class="alert" id="reg-alert" style="display:none;"></div>
+
+      <form id="register-form">
+        <div class="form-group">
+          <label for="course">Course</label>
+          <select id="course" name="course_id" required>
+            <option value="">— Select a course —</option>
+          </select>
+        </div>
+
+        <div class="sbi-info">
+          <div class="sbi-badge">SBI Collect</div>
+          <p>Pay <strong>₹500</strong> on SBI Collect and enter the transaction ID you receive.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="transaction_id">SBI Collect Transaction ID</label>
+          <input type="text" id="transaction_id" name="transaction_id"
+                 placeholder="e.g. DU123456789012" required minlength="5" />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="register-btn">Submit Registration</button>
+      </form>
+    </section>
+
+    <!-- ── Past Registrations ───────────────────────── -->
+    <section class="dash-card history-card">
+      <h2>My Registrations</h2>
+      <div id="registrations-list">
+        <p class="empty-state">Loading...</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

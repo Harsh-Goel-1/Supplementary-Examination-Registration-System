@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Supplementary Examination Registration System — NIT Hamirpur" />
+  <title>Supplementary Exam Registration — NIT Hamirpur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- ── Navbar ─────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <a href="/" class="nav-brand">
+      <span class="brand-icon">📝</span> NITH Suppl. Exam
+    </a>
+    <div class="nav-links">
+      <a href="/login.html" class="btn btn-ghost" id="nav-login">Log In</a>
+      <a href="/signup.html" class="btn btn-primary" id="nav-signup">Sign Up</a>
+      <span class="nav-welcome" id="nav-welcome" style="display:none;"></span>
+      <a href="/dashboard.html" class="btn btn-ghost" id="nav-dashboard" style="display:none;">Dashboard</a>
+      <button class="btn btn-ghost" id="nav-logout" style="display:none;">Log Out</button>
+    </div>
+  </nav>
+
+  <!-- ── Hero Section ───────────────────────────────────── -->
+  <main class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <span class="hero-badge">NIT Hamirpur</span>
+      <h1>Supplementary Examination<br /><span class="gradient-text">Registration Portal</span></h1>
+      <p class="hero-subtitle">
+        Register for supplementary exams seamlessly. Select your course, pay ₹500 via SBI Collect, and track your application status — all in one place.
+      </p>
+      <div class="hero-actions">
+        <a href="/signup.html" class="btn btn-primary btn-lg" id="hero-signup">Get Started</a>
+        <a href="/login.html" class="btn btn-outline btn-lg" id="hero-login">Already Registered? Log In</a>
+      </div>
+    </div>
+
+    <!-- ── Steps ──────────────────────────────────────── -->
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Sign Up</h3>
+        <p>Create an account using your <strong>@nith.ac.in</strong> college email address.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Select Course</h3>
+        <p>Choose the course you wish to appear for in the supplementary exam.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Pay &amp; Register</h3>
+        <p>Pay <strong>₹500</strong> on SBI Collect and enter your transaction ID to complete registration.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Check auth and update navbar
+    (async () => {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (res.ok) {
+          const data = await res.json();
+          document.getElementById('nav-login').style.display = 'none';
+          document.getElementById('nav-signup').style.display = 'none';
+          document.getElementById('nav-welcome').style.display = 'inline';
+          document.getElementById('nav-welcome').textContent = 'Hi, ' + data.name;
+          document.getElementById('nav-dashboard').style.display = 'inline-flex';
+          document.getElementById('nav-logout').style.display = 'inline-flex';
+
+          document.getElementById('hero-signup').textContent = 'Go to Dashboard';
+          document.getElementById('hero-signup').href = '/dashboard.html';
+          document.getElementById('hero-login').style.display = 'none';
+        }
+      } catch {}
+
+      document.getElementById('nav-logout')?.addEventListener('click', async () => {
+        await fetch('/api/auth/logout', { method: 'POST' });
+        window.location.href = '/';
+      });
+    })();
+  </script>
+</body>
+</html>
