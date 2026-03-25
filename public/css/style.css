@@ -451,13 +451,7 @@ a:hover { color: var(--primary-hover); }
 .sbi-info p {
   color: var(--text-muted);
   font-size: 0.88rem;
-  line-height: 1.5;
-   display: flex;
-   bagground-color:yellow;
-   align-item:center;
-   content:justify;
-   
-   
+  line-height: 1.5;  
 }
 
 /* ── Registrations Table ───────────────────────────────── */
